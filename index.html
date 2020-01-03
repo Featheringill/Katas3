@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Adding content with document.createElement</title>
     <style>
-      .bar {background: gray; height: 20px; margin: 10px; color: white;}
+      .bar {
+        background: gray;
+        height: 20px;
+        margin: 10px 0;
+        color: white;
+      }
+      .rectangleStyleOne {
+        background: gray;
+        margin: 5px 0;
+      }
+      .rectangleStyleTwo {
+        background: gray;
+        margin: 5px 0;
+        height: 20px;
+      }
+      .rectanglesStyleThree {
+        background: gray;
+        margin: 5px 0;
+        height: 20px;
+      }
+      .rectanglesStyleThreeGray {
+        background: gray;
+        margin: 5px 0;
+        height: 20px;
+      }
+      .rectanglesStyleThreeRed {
+        background: red;
+        margin: 5px 0;
+        height: 20px;
+      }
     </style>
   </head>
+  const sampleArray = [ 469, 755, 244, 245, 758, 450, 302, 20, 712, 71, 456, 21,
+  398, 339, 882, 848, 179, 535, 940, 472 ];
   <body>
     <h1>Adding content with document.createElement</h1>
     <div id="d1"></div>
     <script>
-      for(i=1; i<=3; i++) {
+      for (i = 1; i <= 3; i++) {
         // Create a div, with class "bar", and set the width to 100px.
         var newElement = document.createElement("div");
         newElement.className = "bar";
-        newElement.style.width = i*100 + "px";
-        console.dir (newElement)
+        newElement.style.width = i * 100 + "px";
+        console.dir(newElement);
         // Place a text label inside the new div.
         var newText = document.createTextNode("Bar #" + i);
         newElement.appendChild(newText);
@@ -47,9 +78,110 @@
     <div id="9_kata"></div>
     <h1>Square Numbers, Counting Down From 100</h1>
     <div id="10_kata"></div>
-   
+    <h1>Even Numbers From a Sample Array</h1>
+    <div id="11_kata"></div>
+    <h1>Odd Numbers From a Sample Array</h1>
+    <div id="12_kata"></div>
+    <h1>Numbers Divisible by 8 From a Sample Array</h1>
+    <div id="13_kata"></div>
+    <h1>Square of Each Element in Sample Array</h1>
+    <div id="14_kata"></div>
+    <h1>Sum of All the Numbers From 1 to 20</h1>
+    <div id="15_kata"></div>
+    <h1>Sum of All the Elements in a Sample Array</h1>
+    <div id="16_kata"></div>
+    <h1>Smallest Element in a Sample Array</h1>
+    <div id="17_kata"></div>
+    <h1>Largest Element in a Sample Array.</h1>
+    <div id="18_kata"></div>
+    <h1>Kata 19: 20 solid gray rectangles, each 20px high and 100px wide</h1>
+    <div id="19_kata"></div>
+    <script>
+      for (i = 0; i < 20; i++) {
+        var kata19Rectangles = document.createElement("div");
+        kata19Rectangles.className = "rectangleStyleOne";
+        kata19Rectangles.style.width = 100 + "px";
+        kata19Rectangles.style.height = 20 + "px";
+        console.dir(kata19Rectangles);
 
+        // Put the new div on the page inside the existing element "d2".
+        var destination = document.getElementById("19_kata");
+        destination.appendChild(kata19Rectangles);
+      }
+    </script>
+    <h1>
+      Kata 20: Display 20 solid gray rectangles, each 20px high, with widths
+      ranging evenly from 105px to 200px
+    </h1>
+    <div id="kata_20"></div>
+    <script>
+      for (let i = 105; i <= 200; i += 5) {
+        //create a div, with class "rectangleStyleTwo", that increments in width at every iteration by 5 px,
+        //starting with 105px, and stopping with the 20th rectangle being 200px wide
 
+        let kata20Rectangles = document.createElement("div");
+        kata20Rectangles.className = "rectangleStyleTwo";
+        kata20Rectangles.style.width = i + "px";
+
+        let destination = document.getElementById("kata_20");
+        destination.appendChild(kata20Rectangles);
+      }
+    </script>
+
+    <h1>
+      kata 21: 20 solid gray rectangles, each 20px high, with widths in pixels
+      given by the 20 elements of sampleArray.
+    </h1>
+    <div id="kata_21"></div>
+    <script src="katas3.js"></script>
+    <script>
+      for (let i = 0; i < sampleArray.length; i++) {
+        let kata21Rectangles = document.createElement("div");
+        kata21Rectangles.className = "rectanglesStyleThree";
+        kata21Rectangles.style.width = sampleArray[i] + "px";
+
+        let destination = document.getElementById("kata_21");
+        destination.append(kata21Rectangles);
+      }
+    </script>
+
+    <h1>
+      kata 22: #21, but alternate colors so that every other rectangle is red
+    </h1>
+    <div id="kata_22"></div>
+    <script>
+      for (let i = 0; i < sampleArray.length; i++) {
+        if (i % 2 == 0) {
+          let kata22Rectangles = document.createElement("div");
+          kata22Rectangles.className = "rectanglesStyleThreeGray";
+          kata22Rectangles.style.width = sampleArray[i] + "px";
+          let destination = document.getElementById("kata_22");
+          destination.append(kata22Rectangles);
+        }
+
+        if (i % 2 == 1) {
+          let kata22Rectangles = document.createElement("div");
+          kata22Rectangles.className = "rectanglesStyleThreeRed";
+          kata22Rectangles.style.width = sampleArray[i] + "px";
+          let destination = document.getElementById("kata_22");
+          destination.append(kata22Rectangles);
+        }
+      }
+    </script>
+
+    <h1>kata 23: #21, but color the rectangles with even widths red.</h1>
+    <div id="kata_23"></div>
+    <script>
+      for (let i = 0; i < sampleArray.length; i++) {
+        if (sampleArray[i] % 2 == 0) {
+          let kata23Rectangles = document.createElement("div");
+          kata23Rectangles.className = "rectanglesStyleThreeRed";
+          kata23Rectangles.style.width = sampleArray[i] + "px";
+          let destination = document.getElementById("kata_23");
+          destination.append(kata23Rectangles);
+        }
+      }
+    </script>
 
     <script src="katas3.js"></script>
   </body>
